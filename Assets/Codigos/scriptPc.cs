@@ -94,7 +94,7 @@ public class pcScript : MonoBehaviour
             iFrameTime = 1;
  
         }
-
+		
     }
 
 
@@ -172,13 +172,13 @@ public class pcScript : MonoBehaviour
             }
             else
             {
-                    //rbd.AddForce(new Vector2(0, forPulo));
-                    rbd.velocity = new Vector2(rbd.velocity.x, forPulo);
+                //rbd.AddForce(new Vector2(0, forPulo));
+                rbd.velocity = new Vector2(rbd.velocity.x, forPulo);
                 pulou = true;
                
             }
             jumpCount--;
-        }
+		}
 
 
     }
@@ -187,22 +187,21 @@ public class pcScript : MonoBehaviour
     {
         RaycastHit2D hitChao;
         //Verifica se esta chao
-        hitChao = Physics2D.Raycast(pe.transform.position, -pe.transform.up , 0.1f, camadaChao);
+        hitChao = Physics2D.Raycast(pe.transform.position, -pe.transform.up , 0.05f, camadaChao);
         if (hitChao.collider != null)
         {
             isChao = true;
             coyoteTimeCounter = 0f;
             canCoyote = true;
             transform.parent = hitChao.collider.transform;
+			
+			if (!pulou){
+             jumpCount = 2;
+			}
+		
+			
+			pulou = false;
 
-            if (!pulou)
-            {
-                jumpCount = 2;
-            }
-            if(jumpCount == 0)
-            {
-                pulou = false;
-            }
         }
         else
         {

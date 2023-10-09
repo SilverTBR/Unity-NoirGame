@@ -13,6 +13,7 @@ public class scriptCaiu : MonoBehaviour
 			SceneManager.LoadScene("Menu");
  
         }
+		Destroy(col.gameObject);
  
         
 
